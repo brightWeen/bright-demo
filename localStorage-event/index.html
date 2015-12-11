@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <input type="text" id="myText"  placeholder="试试输入文本"/>
+</div>
+<div>
+  下面的iframe会同步文本
+</div>
+<iframe src="iframe.html" width="300px" height="300px"></iframe>
+<script>
+    window.onload=function(){
+        myText.onkeyup=function(){
+            localStorage.setItem("myText",myText.value);
+        }
+    }
+</script>
+</body>
+</html>

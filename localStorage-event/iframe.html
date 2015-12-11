@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>
+        localstorage 跨iframe通讯
+    </p>
+<div id="myText"></div>
+<script>
+
+    function addEvent(evnt, elem, func) {
+        if (elem.addEventListener)  // W3C DOM
+            elem.addEventListener(evnt,func,false);
+        else if (elem.attachEvent) { // IE DOM
+            elem.attachEvent("on"+evnt, func);
+        }
+        else { // No much to do
+            elem[evnt] = func;
+        }
+    }
+
+    var elem = 'onstorage' in document ? document:window;
+    addEvent("storage",elem,function(e){
+
+        var key = localStorage.getItem('myText');
+
+        myText.innerHTML=key;
+    })
+
+</script>
+</body>
+</html>
